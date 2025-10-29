@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jejak Sejarah Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid #000;
+            position: relative;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://picsum.photos/seed/indonesia/1200/200.jpg') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .author {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            color: #ddd;
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #555;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: #555;
+            color: #fff;
+            border-color: #777;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .hero-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #444;
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-card {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .hero-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+        
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #222;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        .hero-title {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .hero-bio {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .hero-details {
+            margin-top: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .detail-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .timeline {
+            margin-top: 40px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+            text-align: center;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .timeline-date {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #333;
+            padding-right: 20px;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 2px solid #ddd;
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #333;
+        }
+        
+        .quote {
+            background-color: #f9f9f9;
+            border-left: 4px solid #333;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #444;
+        }
+        
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .footer-section p, .footer-section ul {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-card {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                padding-bottom: 10px;
+            }
+            
+            .timeline-content {
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid #ddd;
+                padding-top: 10px;
+            }
+            
+            .timeline-content::before {
+                left: 0;
+                top: -6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Jejak Sejarah Indonesia</h1>
+            <p class="subtitle">Mengenal Tokoh-Tokoh Pahlawan Bangsa</p>
+            <p class="author">by Sabrina Yuke Pratiwi</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-item active" data-hero="soekarno">Soekarno</div>
+            <div class="nav-item" data-hero="hatta">Mohammad Hatta</div>
+            <div class="nav-item" data-hero="kartini">R.A. Kartini</div>
+            <div class="nav-item" data-hero="diponegoro">Pangeran Diponegoro</div>
+            <div class="nav-item" data-hero="cutnyakdhien">Cut Nyak Dhien</div>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h2>Menelusuri Perjuangan Para Pahlawan</h2>
+                <p>Indonesia memiliki sejarah panjang yang dipenuhi oleh perjuangan dan pengorbanan para pahlawan. Melalui website ini, kita akan mengenal lebih dekat tokoh-tokoh yang telah berjasa besar bagi kemerdekaan dan kemajuan bangsa Indonesia.</p>
+            </section>
+            
+            <!-- Soekarno -->
+            <section id="soekarno" class="content-section active">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <img src="ir.jpg" alt="Soekarno">
+                    </div>
+                    <div class="hero-info">
+                        <h2 class="hero-name">Ir. Soekarno</h2>
+                        <p class="hero-title">Proklamator Kemerdekaan & Presiden Pertama Indonesia</p>
+                        <div class="hero-bio">
+                            <p>Ir. Soekarno, lahir di Surabaya, Jawa Timur pada 6 Juni 1901, adalah proklamator kemerdekaan Indonesia dan presiden pertama yang menjabat dari tahun 1945 hingga 1967. Beliau adalah seorang nasionalis, pemimpin revolusi, dan orator ulung yang memainkan peran krusial dalam perjuangan kemerdekaan Indonesia dari penjajahan Belanda.</p>
+                            <p>Soekarno menghabiskan sebagian besar hidupnya untuk memperjuangkan kemerdekaan Indonesia. Beliau mendirikan Partai Nasional Indonesia (PNI) pada tahun 1927 dan memimpin gerakan nasionalis melawan kolonialisme Belanda. Karena aktivitas politiknya, Soekarno sering ditangkap dan diasingkan oleh pemerintah kolonial Belanda.</p>
+                        </div>
+                        <div class="hero-details">
+                            <div class="detail-item"><strong>Nama Lengkap:</strong> Kusno Sosrodihardjo</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Lahir:</strong> Surabaya, 6 Juni 1901</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Wafat:</strong> Jakarta, 21 Juni 1970</div>
+                            <div class="detail-item"><strong>Orang Tua:</strong> Raden Soekemi Sosrodihardjo dan Ida Ayu Nyoman Rai</div>
+                            <div class="detail-item"><strong>Istri:</strong> Fatmawati, Hartini, Ratna Sari Dewi (Naoko Nemoto)</div>
+                            <div class="detail-item"><strong>Anak:</strong> Guntur Soekarnoputra, Megawati Soekarnoputri, Rachmawati Soekarnoputri, Sukmawati Soekarnoputri, dan lainnya</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Bung Karno adalah satu-satunya pemimpin Asia yang berhasil mempersatukan berbagai etnis, agama, dan budaya dalam satu negara yang merdeka." - John F. Kennedy
+                </div>
+                
+                <div class="timeline">
+                    <h3>Perjalanan Hidup Soekarno</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1901</div>
+                        <div class="timeline-content">Lahir di Surabaya, Jawa Timur</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1921</div>
+                        <div class="timeline-content">Lulus dari Technische Hoogeschool te Bandoeng (sekarang ITB) dengan gelar Insinyur</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1927</div>
+                        <div class="timeline-content">Mendirikan Partai Nasional Indonesia (PNI)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1930-1942</div>
+                        <div class="timeline-content">Beberapa kali ditangkap dan diasingkan oleh pemerintah kolonial Belanda</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">17 Agustus 1945</div>
+                        <div class="timeline-content">Bersama Mohammad Hatta, memproklamasikan kemerdekaan Indonesia</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1945-1967</div>
+                        <div class="timeline-content">Menjabat sebagai Presiden Pertama Indonesia</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1967</div>
+                        <div class="timeline-content">Meletakkan jabatan presiden dan digantikan oleh Soeharto</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1970</div>
+                        <div class="timeline-content">Wafat di Jakarta dan dimakamkan di Blitar, Jawa Timur</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mohammad Hatta -->
+            <section id="hatta" class="content-section">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <img src="moh.jpg" alt="Mohammad Hatta">
+                    </div>
+                    <div class="hero-info">
+                        <h2 class="hero-name">Dr. Mohammad Hatta</h2>
+                        <p class="hero-title">Proklamator Kemerdekaan & Wakil Presiden Pertama Indonesia</p>
+                        <div class="hero-bio">
+                            <p>Dr. Mohammad Hatta, lahir di Bukittinggi, Sumatera Barat pada 12 Agustus 1902, adalah proklamator kemerdekaan Indonesia dan wakil presiden pertama yang menjabat dari tahun 1945 hingga 1956. Beliau dikenal sebagai "Bung Hatta" dan merupakan seorang ekonom, negarawan, dan pejuang kemerdekaan yang konsisten dalam perjuangannya.</p>
+                            <p>Hatta mendapatkan pendidikan di Belanda dan aktif dalam gerakan pergerakan nasional Indonesia di sana. Bersama Soekarno, ia memimpin perjuangan kemerdekaan Indonesia dan menjadi salah satu tokoh penting dalam perumusan dasar negara Indonesia, Pancasila. Setelah kemerdekaan, Hatta menjabat sebagai Wakil Presiden dan Perdana Menteri Indonesia.</p>
+                        </div>
+                        <div class="hero-details">
+                            <div class="detail-item"><strong>Nama Lengkap:</strong> Mohammad Hatta</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Lahir:</strong> Bukittinggi, 12 Agustus 1902</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Wafat:</strong> Jakarta, 14 Maret 1980</div>
+                            <div class="detail-item"><strong>Orang Tua:</strong> Haji Mohammad Djamil dan Siti Saleha</div>
+                            <div class="detail-item"><strong>Istri:</strong> Rahmi Hatta</div>
+                            <div class="detail-item"><strong>Anak:</strong> Meutia Hatta, Gemala Hatta, dan Halida Hatta</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Kemerdekaan hanyalah didapat dan dimiliki oleh bangsa yang jiwanya berkobar-kobar dengan tekad 'merdeka atau mati'." - Mohammad Hatta
+                </div>
+                
+                <div class="timeline">
+                    <h3>Perjalanan Hidup Mohammad Hatta</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1902</div>
+                        <div class="timeline-content">Lahir di Bukittinggi, Sumatera Barat</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1921-1932</div>
+                        <div class="timeline-content">Menempuh pendidikan di Belanda dan aktif dalam organisasi pergerakan</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1932</div>
+                        <div class="timeline-content">Kembali ke Indonesia dan mendirikan Pendidikan Nasional Indonesia</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1934-1942</div>
+                        <div class="timeline-content">Dibuang oleh pemerintah kolonial Belanda ke Boven Digoel, Papua</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">17 Agustus 1945</div>
+                        <div class="timeline-content">Bersama Soekarno, memproklamasikan kemerdekaan Indonesia</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1945-1956</div>
+                        <div class="timeline-content">Menjabat sebagai Wakil Presiden Pertama Indonesia</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1956</div>
+                        <div class="timeline-content">Mengundurkan diri dari jabatan Wakil Presiden</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1980</div>
+                        <div class="timeline-content">Wafat di Jakarta dan dimakamkan di TPU Tanah Kusir, Jakarta</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- R.A. Kartini -->
+            <section id="kartini" class="content-section">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <img src="kr.jpg" alt="R.A. Kartini">
+                    </div>
+                    <div class="hero-info">
+                        <h2 class="hero-name">Raden Adjeng Kartini</h2>
+                        <p class="hero-title">Pahlawan Emansipasi Wanita Indonesia</p>
+                        <div class="hero-bio">
+                            <p>Raden Adjeng Kartini, lahir di Jepara, Jawa Tengah pada 21 April 1879, adalah seorang pahlawan nasional Indonesia yang dikenal sebagai pelopor emansipasi wanita. Beliau berasal dari kalangan bangsawan Jawa namun memiliki pandangan yang maju mengenai hak-hak perempuan untuk mendapatkan pendidikan setara dengan pria.</p>
+                            <p>Kartini menulis surat-surat kepada teman-temannya di Belanda yang kemudian dibukukan dengan judul "Habis Gelap Terbitlah Terang". Dalam surat-suratnya, Kartini mengungkapkan keinginannya untuk melihat wanita Indonesia mendapatkan pendidikan, kebebasan, dan kesetaraan. Meskipun hidupnya singkat, pemikiran Kartini terus menginspirasi gerakan perempuan di Indonesia hingga saat ini.</p>
+                        </div>
+                        <div class="hero-details">
+                            <div class="detail-item"><strong>Nama Lengkap:</strong> Raden Adjeng Kartini</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Lahir:</strong> Jepara, 21 April 1879</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Wafat:</strong> Rembang, 17 September 1904</div>
+                            <div class="detail-item"><strong>Orang Tua:</strong> Raden Mas Adipati Ario Sosroningrat dan M.A. Ngasirah</div>
+                            <div class="detail-item"><strong>Suami:</strong> K.R.M. Adipati Ario Singgih Djojo Adhiningrat</div>
+                            <div class="detail-item"><strong>Anak:</strong> Raden Mas Singgih</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Hanya dengan pendidikan, kita bisa memajukan bangsa. Tanpa pendidikan, bangsa ini akan terus terbelakang." - R.A. Kartini
+                </div>
+                
+                <div class="timeline">
+                    <h3>Perjalanan Hidup R.A. Kartini</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1879</div>
+                        <div class="timeline-content">Lahir di Jepara, Jawa Tengah</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1890-1895</div>
+                        <div class="timeline-content">Bersekolah di ELS (Europese Lagere School)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1895</div>
+                        <div class="timeline-content">Dipingit (dikurung) di rumah sesuai adat Jawa</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1898-1903</div>
+                        <div class="timeline-content">Menulis surat-surat kepada teman-temannya di Belanda</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1903</div>
+                        <div class="timeline-content">Menikah dengan K.R.M. Adipati Ario Singgih Djojo Adhiningrat</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1903</div>
+                        <div class="timeline-content">Mendirikan sekolah untuk wanita di Rembang</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1904</div>
+                        <div class="timeline-content">Wafat setelah melahirkan anak pertamanya</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1911</div>
+                        <div class="timeline-content">Surat-suratnya diterbitkan dalam buku "Habis Gelap Terbitlah Terang"</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pangeran Diponegoro -->
+            <section id="diponegoro" class="content-section">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <img src="pdp.jpg" alt="Pangeran Diponegoro">
+                    </div>
+                    <div class="hero-info">
+                        <h2 class="hero-name">Pangeran Diponegoro</h2>
+                        <p class="hero-title">Pahlawan Nasional & Pemimpin Perang Jawa (1825-1830)</p>
+                        <div class="hero-bio">
+                            <p>Pangeran Diponegoro, lahir di Yogyakarta pada 11 November 1785, adalah seorang pangeran dari Kesultanan Yogyakarta yang memimpin Perang Jawa (1825-1830) melawan pemerintah kolonial Belanda. Beliau adalah putra tertua Sultan Hamengkubuwono III namun lahir dari selir, sehingga tidak memiliki hak mewarisi takhta kesultanan.</p>
+                            <p>Perang Diponegoro atau Perang Jawa adalah perang terbesar yang pernah dialami Belanda selama berkuasa di Indonesia. Perang ini dipicu oleh berbagai faktor, termasuk kebijakan Belanda yang merugikan rakyat, pembangunan jalan yang melintasi makam leluhur Diponegoro, serta ambisi pribadi Diponegoro untuk mengembalikan kejayaan Kesultanan Mataram. Meskipun akhirnya ditangkap dan diasingkan, perjuangan Diponegoro terus menginspirasi gerakan kemerdekaan Indonesia.</p>
+                        </div>
+                        <div class="hero-details">
+                            <div class="detail-item"><strong>Nama Lengkap:</strong> Bendara Raden Mas Mustahar</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Lahir:</strong> Yogyakarta, 11 November 1785</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Wafat:</strong> Makassar, 8 Januari 1855</div>
+                            <div class="detail-item"><strong>Orang Tua:</strong> Sultan Hamengkubuwono III dan R.A. Mangkarawati</div>
+                            <div class="detail-item"><strong>Istri:</strong> Raden Ayu Retnaningsih, Raden Ayu Maduretno, dan lainnya</div>
+                            <div class="detail-item"><strong>Anak:</strong> Pangeran Diponegoro memiliki beberapa anak</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Aku rela mati, asalkan rakyatku bisa merdeka." - Pangeran Diponegoro
+                </div>
+                
+                <div class="timeline">
+                    <h3>Perjalanan Hidup Pangeran Diponegoro</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1785</div>
+                        <div class="timeline-content">Lahir di Yogyakarta sebagai putra Sultan Hamengkubuwono III</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1814</div>
+                        <div class="timeline-content">Menolak tawaran menjadi penerus takhta Kesultanan Yogyakarta</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1825</div>
+                        <div class="timeline-content">Memulai Perang Jawa melawan pemerintah kolonial Belanda</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1825-1830</div>
+                        <div class="timeline-content">Memimpin perang gerilya melawan Belanda di Jawa Tengah dan Yogyakarta</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">28 Maret 1830</div>
+                        <div class="timeline-content">Ditangkap oleh Belanda melalui tipu daya dalam perundingan di Magelang</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1830-1855</div>
+                        <div class="timeline-content">Dibuang ke Makassar, Sulawesi Selatan</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1855</div>
+                        <div class="timeline-content">Wafat di Makassar dan dimakamkan di sana</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1973</div>
+                        <div class="timeline-content">Ditetapkan sebagai Pahlawan Nasional Indonesia</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Cut Nyak Dhien -->
+            <section id="cutnyakdhien" class="content-section">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <img src="cut.jpg" alt="Cut Nyak Dhien">
+                    </div>
+                    <div class="hero-info">
+                        <h2 class="hero-name">Cut Nyak Dhien</h2>
+                        <p class="hero-title">Pahlawan Nasional & Pemimpin Perlawanan di Aceh</p>
+                        <div class="hero-bio">
+                            <p>Cut Nyak Dhien, lahir di Lampadang, Kerajaan Aceh pada 1848, adalah seorang pahlawan nasional dari Aceh yang memimpin perlawanan melawan kolonial Belanda dalam Perang Aceh. Beliau adalah putri dari seorang uleebalang (pemimpin daerah) yang menikah dengan Teuku Ibrahim Lamnga, seorang uleebalang dari VI Mukim.</p>
+                            <p>Setelah suaminya gugur dalam pertempuran melawan Belanda, Cut Nyak Dhien menikah dengan Teuku Umar, seorang pemimpin perlawanan Aceh. Bersama suaminya, Cut Nyak Dhien terus memimpin perlawanan gerilya melawan Belanda. Setelah Teuku Umar gugur pada tahun 1899, Cut Nyak Dhien melanjutkan perjuangan hingga akhirnya ditangkap oleh Belanda pada tahun 1901 karena usianya yang sudah tua dan kondisi kesehatannya yang memburuk. Beliau kemudian diasingkan ke Sumedang, Jawa Barat hingga wafat pada tahun 1908.</p>
+                        </div>
+                        <div class="hero-details">
+                            <div class="detail-item"><strong>Nama Lengkap:</strong> Cut Nyak Dhien</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Lahir:</strong> Lampadang, Aceh Besar, 1848</div>
+                            <div class="detail-item"><strong>Tempat/Tanggal Wafat:</strong> Sumedang, 6 November 1908</div>
+                            <div class="detail-item"><strong>Orang Tua:</strong> Teuku Nanta Setia dan Ummah</div>
+                            <div class="detail-item"><strong>Suami:</strong> Teuku Ibrahim Lamnga dan Teuku Umar</div>
+                            <div class="detail-item"><strong>Anak:</strong> Cut Gambang</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Aku tidak mau menyerah kepada kafir. Aku akan terus berjuang sampai titik darah penghabisan." - Cut Nyak Dhien
+                </div>
+                
+                <div class="timeline">
+                    <h3>Perjalanan Hidup Cut Nyak Dhien</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1848</div>
+                        <div class="timeline-content">Lahir di Lampadang, Aceh Besar</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1862</div>
+                        <div class="timeline-content">Menikah dengan Teuku Ibrahim Lamnga</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1873</div>
+                        <div class="timeline-content">Suaminya gugur dalam pertempuran melawan Belanda di Gle Tarum</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1880</div>
+                        <div class="timeline-content">Menikah dengan Teuku Umar</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1881-1899</div>
+                        <div class="timeline-content">Bersama Teuku Umar memimpin perlawanan melawan Belanda</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1899</div>
+                        <div class="timeline-content">Teuku Umar gugur dalam pertempuran di Meulaboh</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1899-1901</div>
+                        <div class="timeline-content">Memimpin perlawanan sendirian setelah kematian suaminya</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1901</div>
+                        <div class="timeline-content">Ditangkap oleh Belanda dan diasingkan ke Sumedang, Jawa Barat</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1908</div>
+                        <div class="timeline-content">Wafat di Sumedang dan dimakamkan di sana</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1964</div>
+                        <div class="timeline-content">Ditetapkan sebagai Pahlawan Nasional Indonesia</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang Website</h3>
+                    <p>Website ini dibuat untuk mengenang jasa para pahlawan Indonesia yang telah berjuang demi kemerdekaan bangsa. Melalui cerita mereka, kita dapat memahami perjuangan yang telah dilalui untuk mencapai Indonesia yang merdeka.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Sumber</h3>
+                    <ul>
+                        <li>Sejarah Nasional Indonesia</li>
+                        <li>Arsip Nasional Republik Indonesia</li>
+                        <li>Buku Pahlawan Indonesia</li>
+                        <li>Dokumentasi Sejarah Perjuangan Bangsa</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p>Email: sabrinayuke@example.com</p>
+                    <p>Telepon: +62 812-3456-7890</p>
+                    <p>Alamat: Jakarta, Indonesia</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jejak Sejarah Indonesia. Dibuat dengan ❤️ oleh Sabrina Yuke Pratiwi. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigasi antar tokoh
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const heroId = this.getAttribute('data-hero');
+                    
+                    // Update active nav item
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update active content section
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    document.getElementById(heroId).classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add animation to timeline items when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
